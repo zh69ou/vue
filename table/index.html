@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>测试</title>
+</head>
+<body>
+	<div id="te">
+		<table is="zltesttable" :heads="heads" :cons="cons" v-on:info="info" v-on:edit="edit" v-on:move="move" v-on:myfun="myfun">
+		</table>
+		<ul is="zltestpage" :page="page" :limit="limit" :size="size" v-on:setpage="setpage"></ul>
+	</div>
+	<script type="text/javascript" src="vue.min.js"></script>
+	<script type="text/javascript" src="class.js"></script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#te',
+			components:{
+				zltesttable:Zltable,
+				zltestpage:Zlpage,
+			},
+			data:{
+				heads:['编号','姓名','电话','操作'],
+				cons:[
+					{id:'1',name:'赵',phone:'123123123',but:[{type:'info',name:'详情'},{type:'edit',name:'编辑'}]},
+					{id:'2',name:'钱',phone:'223123123',but:[{type:'info',name:'详情'},{type:'edit',name:'编辑'}]},
+					{id:'3',name:'孙',phone:'323123123',but:[{type:'info',name:'详情'},{type:'edit',name:'编辑'},{type:'remove',name:'删除'}]}
+				],
+				page:5,
+				limit:4,
+				size:20,
+				url:''
+			},
+			methods:{
+				info:function(obj){
+					alert(obj.cons.name);
+				},
+				edit:function(obj){
+					alert(obj.cons.name);
+				},
+				move:function(obj){
+					alert(obj.cons.name);
+				},
+				myfun:function(obj){
+					alert(obj.cons.name);
+				},
+				setpage:function(obj){
+					this.page=obj.page;
+				}
+			}
+		});
+	</script>
+</body>
+</html>
